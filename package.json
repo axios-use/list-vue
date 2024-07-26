@@ -2,9 +2,22 @@
   "name": "list-vue",
   "version": "0.1.0",
   "description": "A list component used to display items and control loading status.",
-  "main": "index.js",
+  "type": "module",
+  "main": "./lib/index.cjs",
+  "module": "./esm/index.js",
+  "types": "./esm/index.d.ts",
+  "unpkg": "./dist/list-vue.umd.js",
+  "files": [
+    "dist",
+    "lib",
+    "esm"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rimraf dist lib esm; npm run build:js; npm run build:type",
+    "build:js": "vite build",
+    "build:type": "vue-tsc --project ./tsconfig.lib.json --outDir ./esm --emitDeclarationOnly",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
   },
   "repository": {
     "type": "git",
@@ -27,6 +40,19 @@
     "vue": ">=3.0.0"
   },
   "devDependencies": {
-    "vue": "^3.4.31"
+    "@rushstack/eslint-patch": "^1.10.3",
+    "@tsconfig/node18": "^18.2.4",
+    "@types/node": "^20.14.12",
+    "@vitejs/plugin-vue": "^5.1.0",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "@vue/tsconfig": "^0.5.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.27.0",
+    "prettier": "^3.3.3",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.5.4",
+    "vue": "^3.4.31",
+    "vue-tsc": "^2.0.29"
   }
 }
