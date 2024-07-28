@@ -5,8 +5,11 @@ import { useScrollParent } from './use-scroll-parant'
 import { useEventListener } from './use-event-listener'
 import { getPrefixCls, isHidden, useRect } from './utils'
 
+export type ListDirection = 'up' | 'down'
+
 export const scrollListProps = {
   prefixCls: String,
+  direction: { type: String as PropType<ListDirection>, default: 'down' as const },
   offset: { type: Number, default: 300 },
   scroller: Object as PropType<Element>,
   loading: Boolean,
@@ -62,7 +65,11 @@ export const ScrollList = defineComponent({
         let isReachEdge = false
         const placeholderRect = useRect(placeholder)
 
-        isReachEdge = placeholderRect.bottom - scrollParentRect.bottom <= offset
+        if (props.direction === 'up') {
+          isReachEdge = scrollParentRect.top - placeholderRect.top <= offset
+        } else {
+          isReachEdge = placeholderRect.bottom - scrollParentRect.bottom <= offset
+        }
 
         if (isReachEdge) {
           loading.value = true
@@ -134,13 +141,13 @@ export const ScrollList = defineComponent({
         ref: placeholder,
         class: `${prefixCls}_placeholder`
       })
-
+      const isDirectionUp = props.direction === 'up'
       return h('div', { ref: root, class: [prefixCls, `${prefixCls}_wrapper`] }, [
-        Content,
+        isDirectionUp ? Placeholder : Content,
         renderLoading(),
         renderFinishedText(),
         renderErrorText(),
-        Placeholder
+        isDirectionUp ? Content : Placeholder
       ])
     }
   }
