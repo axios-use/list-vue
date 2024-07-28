@@ -2,6 +2,8 @@
 
 A list component used to display items and control loading status.
 
+[![](https://img.shields.io/npm/v/@axios-use/list-vue.svg)](https://www.npmjs.com/package/@axios-use/list-vue)
+
 ```shell
 npm i @axios-use/list-vue
 ```
