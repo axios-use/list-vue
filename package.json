@@ -1,5 +1,5 @@
 {
-  "name": "list-vue",
+  "name": "@axios-use/list-vue",
   "version": "0.1.0",
   "description": "A list component used to display items and control loading status.",
   "type": "module",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/wangcch/list-vue.git"
+    "url": "git+ssh://git@github.com/@axios-use/list-vue.git"
   },
   "keywords": [
     "vue",
@@ -33,9 +33,9 @@
   "author": "wangcch <wangcch.cc@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wangcch/list-vue/issues"
+    "url": "https://github.com/@axios-use/list-vue/issues"
   },
-  "homepage": "https://github.com/wangcch/list-vue#readme",
+  "homepage": "https://github.com/@axios-use/list-vue#readme",
   "peerDependencies": {
     "vue": ">=3.0.0"
   },
